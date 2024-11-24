@@ -15,15 +15,6 @@
     efi.canTouchEfiVariables = true;
   };
 
-  services.xserver = {
-
-    # Load nvidia driver for Xorg and Wayland
-        videoDrivers = ["nvidia"];
-
-        # Enable touchpad support (enabled default in most desktopManager).
-          # libinput.enable = true;
-  };
-
   hardware.nvidia = {
 
     # Modesetting is required.
@@ -91,7 +82,15 @@
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services = {
-    xserver.enable = true;
+
+    xserver = {
+        enable = true;
+      # Load nvidia driver for Xorg and Wayland
+          videoDrivers = ["nvidia"];
+
+          # Enable touchpad support (enabled default in most desktopManager).
+            # libinput.enable = true;
+    };
     desktopManager.plasma6.enable = true;
 
     # Login SDDM
@@ -148,19 +147,21 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [ ];
 
-  programs.bash.shellAliases = {
-    yay = "sudo nixos-rebuild switch --upgrade";
-    flex = "fastfetch";
-  };
-
-  programs.nh = {
-    enable = true;
-    flake = "~/git/nix";
-    clean = {
-      enable = true;
-      dates = "daily";
-      extraArgs = "--keep 3";
+  programs = {
+    bash.shellAliases = {
+      yay = "sudo nixos-rebuild switch --upgrade";
+      flex = "fastfetch";
     };
+    nh = {
+        enable = true;
+        flake = "/home/${user.name}/git/nix";
+        clean = {
+          enable = true;
+          dates = "daily";
+          extraArgs = "--keep 3";
+        };
+      };
+    zsh.enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

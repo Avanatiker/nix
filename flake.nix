@@ -19,7 +19,7 @@
 	let
 		user = {
 		    name = "christian";
-		    host = "backbox";
+		    host = "blackbox";
 		    system = "x86_64-linux";
             assets = "~/git/nix/assets";
 		};
@@ -31,7 +31,7 @@
             modules = [
                 ./config.nix
 
-                home-manager.nixos.home-manager {
+                home-manager.nixosModules.home-manager {
                     home-manager = {
                         useGlobalPkgs = true;
                         useUserPackages = true;

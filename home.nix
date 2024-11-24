@@ -16,15 +16,15 @@
     stateVersion = "24.05";
   };
 
-  cli.enable = true;
+#  cli.enable = true;
 
   programs = {
     fastfetch.enable = true;
-#    fish = {
-#      enable = true;
+    zsh = {
+      enable = true;
 #      interactiveShellInit = "fastfetch";
 #      shellInit = "set -g fish_greeting";
-#    };
+    };
     firefox.enable = true;
     kitty.enable = true;
   };
