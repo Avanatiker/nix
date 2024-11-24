@@ -1,7 +1,9 @@
-{ config, lib, ... }:
-
 {
-  imports = [ ./cli ];
+    config,
+    lib,
+    ...
+}: {
+    imports = [ ./cli ];
 
 #  options = {
 #      cli.enable = lib.mkEnableOption "cli";

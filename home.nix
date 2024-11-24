@@ -1,56 +1,57 @@
 {
-  config,
-  lib,
-  pkgs,
-  inputs,
-  user,
-  ...
+    config,
+    lib,
+    pkgs,
+    inputs,
+    user,
+    ...
 }:
 
 {
-  imports = [ ./home ];
+    imports = [ ./home ];
 
-  home = {
-    username = "${user.name}";
-    homeDirectory = "/home/${user.name}";
-    stateVersion = "24.05";
-  };
-
-#  cli.enable = true;
-
-  programs = {
-    fastfetch.enable = true;
-    zsh = {
-      enable = true;
-#      interactiveShellInit = "fastfetch";
-#      shellInit = "set -g fish_greeting";
+    home = {
+        username = "${user.name}";
+        homeDirectory = "/home/${user.name}";
+        stateVersion = "24.05";
     };
-    firefox.enable = true;
-    kitty.enable = true;
-  };
 
-  home.packages = with pkgs; [
-    # Communication
-    telegram-desktop
-    discord
+#   cli.enable = true;
 
-    # Development
-    jetbrains.idea-ultimate
-    gitkraken
-    kdePackages.kate
-    git
+    programs = {
+        fastfetch.enable = true;
+        zsh = {
+            enable = true;
+#           interactiveShellInit = "fastfetch";
+#           shellInit = "set -g fish_greeting";
+        };
+        firefox.enable = true;
+        kitty.enable = true;
+    };
 
-    # Entertainment
-    steam
-    spotify
-    vlc
+    home.packages = with pkgs; [
+        # Communication
+        telegram-desktop
+        discord
 
-    # Networking
-    kdePackages.ktorrent
+        # Development
+        jetbrains.idea-ultimate
+        gitkraken
+        kdePackages.kate
+        git
+        jdk
 
-    # Misc
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-  ];
+        # Entertainment
+        steam
+        spotify
+        vlc
 
-  programs.home-manager.enable = true;
+        # Networking
+        kdePackages.ktorrent
+
+        # Misc
+        (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    ];
+
+    programs.home-manager.enable = true;
 }
