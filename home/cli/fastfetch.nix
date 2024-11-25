@@ -15,7 +15,7 @@
             preserveAspectRatio = true;
             source = "${user.assets}/nixos-logo.png";
             type = "kitty";
-            height = 17;
+            height = 16;
             padding.left = 1;
         };
 
