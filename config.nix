@@ -11,13 +11,18 @@
 
     # Bootloader
     boot.loader = {
-        systemd-boot.enable = true;
+        grub = {
+            enable = true;
+            version = 2;
+            useOSProber = true;
+            device = "nodev";
+            efiSupport = true;
+        };
         efi.canTouchEfiVariables = true;
     };
 
-    hardware.opengl = {
-        enable = true;
-    };
+    # Enable OpenGL
+    hardware.graphics.enable = true;
 
     hardware.nvidia = {
         # Modesetting is required.

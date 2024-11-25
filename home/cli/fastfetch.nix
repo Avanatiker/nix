@@ -49,14 +49,14 @@
               }
 
               {
-                key = " ";
+                key = " ";
                 type = "memory";
               }
 
               {
                 key = " ";
                 type = "shell";
-                keyColor = "green";
+                keyColor = "magenta";
               }
 
               {
@@ -66,13 +66,13 @@
               }
 
               {
-                key = " ";
+                key = " ";
                 type = "de";
                 keyColor = "blue";
               }
 
               {
-                key = "󰌆 ";
+                key = " ";
                 type = "wm";
                 keyColor = "cyan";
               }
@@ -84,7 +84,7 @@
 #              }
 
               {
-                key = " ";
+                key = "󰻠 ";
                 type = "cpu";
                 keyColor = "yellow";
               }
