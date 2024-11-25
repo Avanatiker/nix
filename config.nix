@@ -15,6 +15,10 @@
         efi.canTouchEfiVariables = true;
     };
 
+    hardware.opengl = {
+        enable = true;
+    };
+
     hardware.nvidia = {
         # Modesetting is required.
         modesetting.enable = true;
@@ -145,21 +149,34 @@
     # $ nix search wget
     environment.systemPackages = with pkgs; [ ];
 
+    # HDR Patch: https://discuss.kde.org/t/hdr-toggle-vanished-from-system-settings/23735/5
+    environment.sessionVariables = {
+        KWIN_DRM_ALLOW_NVIDIA_COLORSPACE = 1;
+    };
+
     programs = {
-        bash.shellAliases = {
-            yay = "sudo nixos-rebuild switch --upgrade";
-            flex = "fastfetch";
-        };
         nh = {
             enable = true;
             flake = "/home/${user.name}/git/nix";
             clean = {
                 enable = true;
                 dates = "daily";
-                extraArgs = "--keep 3";
+                extraArgs = "--keep 9";
             };
         };
-        zsh.enable = true;
+        zsh = {
+            enable = true;
+            shellAliases = {
+                yay = "sudo nixos-rebuild switch --flake ~/git/nix";
+            };
+            ohMyZsh = {
+                enable = true;
+#                theme = "powerlevel10k";
+                theme = "lambda";
+            };
+            interactiveShellInit = "fastfetch";
+            autosuggestions.enable = true;
+        };
     };
 
     # Some programs need SUID wrappers, can be configured further or are
