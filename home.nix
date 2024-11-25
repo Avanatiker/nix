@@ -16,8 +16,6 @@
         stateVersion = "24.05";
     };
 
-#   cli.enable = true;
-
     programs = {
         fastfetch.enable = true;
         firefox.enable = true;
@@ -35,6 +33,7 @@
         kdePackages.kate
         git
         jdk
+        zsh-powerlevel10k
 
         # Entertainment
         steam

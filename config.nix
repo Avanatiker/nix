@@ -172,9 +172,8 @@
             };
             ohMyZsh = {
                 enable = true;
-#                theme = "powerlevel10k";
-                theme = "lambda";
             };
+            promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
             interactiveShellInit = "fastfetch";
             autosuggestions.enable = true;
             syntaxHighlighting.enable = true;
