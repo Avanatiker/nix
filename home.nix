@@ -1,51 +1,56 @@
 {
-    config,
-    lib,
-    pkgs,
-    inputs,
-    user,
-    ...
+  config,
+  lib,
+  pkgs,
+  inputs,
+  user,
+  ...
 }:
 
 {
-    imports = [ ./home ];
+  imports = [ ./home ];
 
-    home = {
-        username = "${user.name}";
-        homeDirectory = "/home/${user.name}";
-        stateVersion = "24.05";
-    };
+  home = {
+    username = "${user.name}";
+    homeDirectory = "/home/${user.name}";
+    stateVersion = "24.05";
+  };
 
-    programs = {
-        fastfetch.enable = true;
-        firefox.enable = true;
-        kitty.enable = true;
-    };
+  programs = {
+    fastfetch.enable = true;
+    firefox.enable = true;
+    kitty.enable = true;
+    java.enable = true;
+  };
 
-    home.packages = with pkgs; [
-        # Communication
-        telegram-desktop
-        discord
+  home.packages = with pkgs; [
+    # Communication
+    telegram-desktop
+    discord
 
-        # Development
-        jetbrains.idea-ultimate
-        gitkraken
-        kdePackages.kate
-        git
-        jdk
-        zsh-powerlevel10k
+    # Development
+    (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [ "github-copilot" ])
+    gitkraken
+    kdePackages.kate
+    git
+    zsh-powerlevel10k
 
-        # Entertainment
-        steam
-        spotify
-        vlc
+    # Entertainment
+    prismlauncher
+    steam
+    spotify
+    vlc
 
-        # Networking
-        kdePackages.ktorrent
+    # Networking
+    kdePackages.ktorrent
 
-        # Misc
-        (nerdfonts.override { fonts = [ "FiraCode" ]; })
-    ];
+    # Misc
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
 
-    programs.home-manager.enable = true;
+    # Libraries
+    libGL
+    nodejs
+  ];
+
+  programs.home-manager.enable = true;
 }
