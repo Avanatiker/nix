@@ -70,7 +70,7 @@
 
   networking = {
     hostName = "blackbox"; # Define your hostname.
-    #       wireless.enable = true; # Enables wireless support via wpa_supplicant.
+    # wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
@@ -191,7 +191,7 @@
       enable = true;
       enableCompletion = true;
       shellAliases = {
-        yay = "sudo nixos-rebuild switch --flake ~/git/nix";
+        yay = "cd ~/git/nix; nix fmt; sudo nixos-rebuild switch --flake ~/git/nix";
       };
       ohMyZsh = {
         enable = true;
