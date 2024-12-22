@@ -1,14 +1,11 @@
 {
-  config,
-  lib,
   pkgs,
-  inputs,
   user,
   ...
 }:
 
 {
-  imports = [ ./home ];
+  imports = [ ./fastfetch.nix ];
 
   home = {
     username = "${user.name}";
@@ -34,6 +31,7 @@
     kdePackages.kate
     git
     zsh-powerlevel10k
+    zsh
 
     # Entertainment
     prismlauncher
@@ -45,7 +43,7 @@
     kdePackages.ktorrent
 
     # Misc
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.fira-code
 
     # Libraries
     libGL

@@ -49,7 +49,7 @@
               extraSpecialArgs = {
                 inherit inputs user;
               };
-              users.${user.name} = import ./home.nix;
+              users.${user.name} = import ./home;
             };
           }
         ];
