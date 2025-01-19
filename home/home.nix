@@ -41,6 +41,7 @@
 
     # Networking
     kdePackages.ktorrent
+    chromium
 
     # Misc
     nerd-fonts.fira-code
